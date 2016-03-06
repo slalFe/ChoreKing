@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="ChoreKing.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ChoreKing"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GridView ItemsSource="{x:Bind ToDoChores}" Name="ToDoGrid" SelectionChanged="ToDoGrid_SelectionChanged" Grid.Column="0" Background="#0078d7">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="local:Chore">
+                    <StackPanel>
+                        <TextBox Text="{x:Bind Name, Mode=TwoWay}" />
+                        <DatePicker x:Name="WhenNext" Date="{x:Bind WhenNext, Mode=TwoWay}" DateChanged="WhenNext_DateChanged" />
+                        <Button x:Name="DoneButton" Content="DONE" Click="DoneButton_Click" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        <GridView ItemsSource="{x:Bind DoneChores}" Name="DoneGrid" SelectionChanged="DoneGrid_SelectionChanged" Grid.Column="1" Background="#0044d7">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="local:Chore">
+                    <StackPanel>
+                        <TextBox Text="{x:Bind Name, Mode=TwoWay}" />
+                        <DatePicker x:Name="WhenNext" Date="{x:Bind WhenNext, Mode=TwoWay}" DateChanged="WhenNext_DateChanged" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+</Page>
