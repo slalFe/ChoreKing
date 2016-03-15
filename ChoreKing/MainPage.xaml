@@ -12,23 +12,24 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <GridView ItemsSource="{x:Bind ToDoChores}" Name="ToDoGrid" SelectionChanged="ToDoGrid_SelectionChanged" Grid.Column="0" Background="#0078d7">
+        <GridView ItemsSource="{x:Bind ToDoChores}" x:Name="ToDoGrid" SelectionChanged="ToDoGrid_SelectionChanged" Grid.Column="0" Background="#0078d7">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Chore">
                     <StackPanel>
                         <TextBox Text="{x:Bind Name, Mode=TwoWay}" />
-                        <DatePicker x:Name="WhenNext" Date="{x:Bind WhenNext, Mode=TwoWay}" DateChanged="WhenNext_DateChanged" />
-                        <Button x:Name="DoneButton" Content="DONE" Click="DoneButton_Click" />
+                        <DatePicker x:Name="WhenNext" Date="{x:Bind WhenNext, Mode=TwoWay}" DateChanged="WhenNext_DateChanged" YearVisible="False" />
+                        <Button x:Name="DoneButton" Content="Done" Click="DoneButton_Click" />
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <GridView ItemsSource="{x:Bind DoneChores}" Name="DoneGrid" SelectionChanged="DoneGrid_SelectionChanged" Grid.Column="1" Background="#0044d7">
+        <GridView ItemsSource="{x:Bind DoneChores}" x:Name="DoneGrid" SelectionChanged="DoneGrid_SelectionChanged" Grid.Column="1" Background="#0044d7">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Chore">
                     <StackPanel>
                         <TextBox Text="{x:Bind Name, Mode=TwoWay}" />
-                        <DatePicker x:Name="WhenNext" Date="{x:Bind WhenNext, Mode=TwoWay}" DateChanged="WhenNext_DateChanged" />
+                        <DatePicker x:Name="WhenNext" Date="{x:Bind WhenNext, Mode=TwoWay}" DateChanged="WhenNext_DateChanged" YearVisible="False" />
+                        <Button x:Name="NeedsDoingButton" Content="Needs Doing" Click="NeedsDoingButton_Click" />
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
